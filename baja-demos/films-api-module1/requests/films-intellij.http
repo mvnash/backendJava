@@ -1,0 +1,38 @@
+### Read All films
+GET {{baseUrl}}/films
+
+### Create One film
+POST {{baseUrl}}/films
+Content-Type: application/json
+
+{
+  "title" : "Venom: Let There Be Carnage",
+  "duration" : 9,
+  "budget" : 110,
+  "link" : "https://en.wikipedia.org/wiki/Venom:_Let_There_Be_Carnage"
+}
+
+### Delete One film
+DELETE {{baseUrl}}/films/5
+
+### Update One film
+PUT {{baseUrl}}/films/4
+Content-Type: application/json
+
+{
+  "title" : "Venom: Let There Be Carnage",
+  "duration" : 97,
+  "budget" : 110,
+  "link" : "https://en.wikipedia.org/wiki/Venom:_Let_There_Be_Carnage"
+}
+
+### Create One film with dangerous characters
+POST {{baseUrl}}/films
+Content-Type: application/json
+
+{
+  "title" : "<img src=\"#\" onerror=\"alert('You have been hacked !')\">",
+  "duration" : 9,
+  "budget" : 110,
+  "link" : "https://en.wikipedia.org/wiki/Venom:_Let_There_Be_Carnage"
+}

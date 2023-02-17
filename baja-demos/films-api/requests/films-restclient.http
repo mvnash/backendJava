@@ -1,0 +1,44 @@
+@baseUrl = http://localhost:8080
+
+### Login the default user & define a Request Variable
+# @name james
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+  "login":"james",
+  "password":"password"
+}
+### get the james' token in a File Variable
+@jamesToken = {{james.response.body.token}}
+
+### Create One film
+POST {{baseUrl}}/films
+Content-Type: application/json
+Authorization: {{jamesToken}}
+
+{
+  "title" : "Venom: Let There Be Carnage",
+  "duration" : 97,
+  "budget" : 110,
+  "link" : "https://en.wikipedia.org/wiki/Venom:_Let_There_Be_Carnage"
+}
+
+### Read All films
+GET {{baseUrl}}/films
+
+### Delete One film
+DELETE {{baseUrl}}/films/5
+Authorization: {{admin.response.body.token}}
+
+### Update One film
+PUT {{baseUrl}}/films/4
+Content-Type: application/json
+Authorization: {{jamesToken}}
+
+{
+  "title" : "Venom: Let There Be Carnage",
+  "duration" : 97,
+  "budget" : 110,
+  "link" : "https://en.wikipedia.org/wiki/Venom:_Let_There_Be_Carnage"
+}
